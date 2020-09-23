@@ -14,13 +14,13 @@ dependencies {
 
     implementation group: 'io.grpc', name: 'grpc-netty', version: versions.grpc
 
-    implementation group: 'io.projectreactor', name: 'reactor-core', version: versions.reactor
+    implementation group: 'io.projectreactor', name: 'reactor-core'
 
     implementation group: 'org.slf4j', name: 'jcl-over-slf4j', version: versions.slf4j
     implementation group: 'ch.qos.logback', name: 'logback-classic', version: versions.logback
 
     testImplementation group: 'io.grpc', name: 'grpc-testing', version: versions.grpc
-    testImplementation group: 'io.projectreactor', name: 'reactor-test', version: versions.reactor
+    testImplementation group: 'io.projectreactor', name: 'reactor-test'
     testImplementation group: 'org.mockito', name: 'mockito-core', version: versions.mockito
     testImplementation group: 'cglib', name: 'cglib-nodep', version: versions.cglib
 
