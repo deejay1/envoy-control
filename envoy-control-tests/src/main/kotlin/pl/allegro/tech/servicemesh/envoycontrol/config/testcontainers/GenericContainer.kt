@@ -127,7 +127,7 @@ open class GenericContainer<SELF : GenericContainer<SELF>> : BaseGenericContaine
         }
     }
 
-    fun restart() = dockerClient.restartContainerCmd(containerId).exec()
+    fun restart() = dockerClient.restartContainerCmd(this.getContainerId()).exec()
 
     private fun sendSignal(signal: String) {
         getDockerClient()
@@ -140,7 +140,7 @@ open class GenericContainer<SELF : GenericContainer<SELF>> : BaseGenericContaine
      * The container host name is randomly generated based on the first 12 characters of the container ID.
      * https://developer.ibm.com/articles/dm-1602-db2-docker-trs/
      */
-    fun containerName() = containerId.substring(0, 12)
+    fun containerName() = this.getContainerId().substring(0, 12)
 }
 
 class ContainerUnableToObtainHostIpException : RuntimeException()
