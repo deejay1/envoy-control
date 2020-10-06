@@ -22,16 +22,16 @@ jobs:
       # Download and cache dependencies
       - restore_cache:
           keys:
-            - v1-dependencies-{{ checksum "build.gradle" }}
+            - v2-dependencies-{{ checksum "build.gradle" }}
             # fallback to using the latest cache if no exact match is found
-            - v1-dependencies-
+            - v2-dependencies-
 
       - run: ./gradlew envoy-control-runner:dependencies envoy-control-test:dependencies envoy-control-source-consul:dependencies
 
       - save_cache:
           paths:
             - ~/.gradle
-          key: v1-dependencies-{{ checksum "build.gradle" }}
+          key: v2-dependencies-{{ checksum "build.gradle" }}
 
       - persist_to_workspace:
           root: .
@@ -44,8 +44,8 @@ jobs:
           at: .
       - restore_cache:
           keys:
-            - v1-dependencies-{{ checksum "build.gradle" }}
-            - v1-dependencies-
+            - v2-dependencies-{{ checksum "build.gradle" }}
+            - v2-dependencies-
       - run:
           name: unit and integration tests
           command: ./gradlew check
@@ -67,8 +67,8 @@ jobs:
           at: .
       - restore_cache:
           keys:
-            - v1-dependencies-{{ checksum "build.gradle" }}
-            - v1-dependencies-
+            - v2-dependencies-{{ checksum "build.gradle" }}
+            - v2-dependencies-
       - run:
           name: reliability tests
           command: ./gradlew clean -Penvironment=integration :envoy-control-tests:reliabilityTest -DRELIABILITY_FAILURE_DURATION_SECONDS=20
